@@ -1,0 +1,12 @@
+{ "name" : "serializer"
+, "description" :  "JSON serializer and parser with secure."
+, "version": "0.0.1"
+, "main" : "./serializer.js"
+, "repository" :
+  { "type" : "git"
+  , "url" : "http://github.com/AF83/node-serializer.git"
+  }
+, "dependencies": {
+  "base64":""
+}
+}
