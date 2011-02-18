@@ -24,4 +24,4 @@ Original author: Pierre Ruyssen
 
 ## License
 
-AGPLv3
+BSD
