@@ -123,3 +123,5 @@ SecureSerializer.prototype = {
 exports.createSecureSerializer = function(encrypt_key, validate_key) {
   return new SecureSerializer(encrypt_key, validate_key);
 }
+
+exports.randomString = randomString;
