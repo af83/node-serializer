@@ -1,6 +1,6 @@
 { "name" : "serializer"
 , "description" :  "JSON serializer and parser with secure."
-, "version": "0.0.1"
+, "version": "0.0.2"
 , "main" : "./serializer.js"
 , "repository" :
   { "type" : "git"
