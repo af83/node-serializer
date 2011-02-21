@@ -39,7 +39,7 @@ function randomString(bits) {
  *
  */
 exports.stringify = function(obj) {
-  return base64.encode(new Buffer(JSON.stringify(obj)));
+  return base64.encode(new Buffer(JSON.stringify(obj), 'utf8'));
 };
 
 /**
@@ -57,7 +57,7 @@ exports.parse = function(str) {
 /**
  * Return base64url signed sha1 hash of str using key
  */
-function sign_str(str, key) {
+function signStr(str, key) {
   var hmac = crypto.createHmac('sha1', key);
   hmac.update(str);
   return hmac.digest('base64').replace(/\+/g, '-').replace(/\//g, '_');
@@ -82,7 +82,7 @@ exports.secureStringify = function(obj, encrypt_key, validate_key) {
   var res = cypher.update(nonce_check, DATA_ENCODING, CODE_ENCODING);
   res += cypher.update(data, DATA_ENCODING, CODE_ENCODING);
   res += cypher.final(CODE_ENCODING);
-  var digest = sign_str(data, validate_key + nonce_check);
+  var digest = signStr(data, validate_key + nonce_check);
   return digest + nonce_crypt + res;
 };
 
@@ -98,7 +98,7 @@ exports.secureParse = function(str, encrypt_key, validate_key) {
   data += decypher.final(DATA_ENCODING);
   var nonce_check = data.substring(0, 8);
   data = data.substring(8, data.length);
-  var digest = sign_str(data, validate_key + nonce_check);
+  var digest = signStr(data, validate_key + nonce_check);
   if(digest != expected_digest) throw new Error("Bad digest");
   return JSON.parse(data);
 };
