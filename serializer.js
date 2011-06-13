@@ -1,5 +1,4 @@
 var crypto = require('crypto')
-  , base64 = require('base64')
 ;
 
 /**
@@ -39,7 +38,7 @@ function randomString(bits) {
  *
  */
 exports.stringify = function(obj) {
-  return base64.encode(new Buffer(JSON.stringify(obj), 'utf8'));
+  return new Buffer(JSON.stringify(obj), 'utf8').toString('base64');
 };
 
 /**
@@ -51,7 +50,7 @@ exports.stringify = function(obj) {
  *
  */
 exports.parse = function(str) {
-  return JSON.parse(base64.decode(str));
+  return JSON.parse(new Buffer(str, 'base64').toString('utf8'));
 };
 
 /**
