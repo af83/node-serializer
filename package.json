@@ -6,7 +6,5 @@
   { "type" : "git"
   , "url" : "http://github.com/AF83/node-serializer.git"
   }
-, "dependencies": {
-  "base64":""
-}
+, "dependencies": {}
 }
